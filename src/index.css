@@ -31,3 +31,25 @@ body {
     color-scheme: dark;
   }
 }
+
+/* Symbols */
+.square-symbol {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}
+
+.circle-symbol {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.triangle-symbol {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid black;
+}
