@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "biome lint .",
+    "format": "biome format . --write",
+    "check": "biome check ."
   },
   "dependencies": {
+    "@biomejs/biome": "^1.9.4",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
