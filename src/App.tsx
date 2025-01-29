@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function App() {
+  const [finalAnswer, setFinalAnswer] = useState('');
   return (
     <>
       <h1 className="flex justify-center items-center">Say the vocabulary words</h1>
@@ -31,16 +34,18 @@ export default function App() {
           <p>Is this your final answer?</p>
           <div className="space-x-4">
             <label className="inline-flex items-center">
-              <input type="radio" name="finalAnswer" value="true" className="form-radio" />
+              <input type="radio" name="finalAnswer"
+                onChange={(e) => setFinalAnswer(e.target.value)}
+                value="true" className="form-radio" />
               <span className="ml-2">True</span>
             </label>
             <label className="inline-flex items-center">
-              <input type="radio" name="finalAnswer" value="false" className="form-radio" />
+              <input onChange={(e) => setFinalAnswer(e.target.value)} type="radio" name="finalAnswer" value="false" className="form-radio" />
               <span className="ml-2">False</span>
             </label>
           </div>
         </div>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" disabled={finalAnswer !== 'true'}>
           Submit
         </button>
       </div>
