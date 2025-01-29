@@ -6,17 +6,17 @@ export default function App() {
     <>
       <h1 className="flex justify-center items-center">Say the vocabulary words</h1>
       <div className="space-x-4 flex items-center justify-center">
-        <button className="inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-blue-600 text-white p-4">
+        <button className="inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-blue-600 text-white p-4 hover:ring-[0.75em] hover:ring-blue-200 focus:ring-[0.75em] focus:ring-blue-200 transition-all">
           <span className="w-4 h-4 bg-white mr-2" />
           <span>Stop</span>
         </button>
 
-        <button className="inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-red-600 text-white p-4">
+        <button className="inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-red-600 text-white p-4 hover:ring-[0.75em] hover:ring-red-200 focus:ring-[0.75em] focus:ring-red-200 transition-all">
           <span className="w-4 h-4 bg-white rounded-full mr-2" />
           <span>Record</span>
         </button>
 
-        <button className="inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-green-800 text-white p-4">
+        <button className="inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-green-800 text-white p-4 hover:ring-[0.75em] hover:ring-green-200 focus:ring-[0.75em] focus:ring-green-200 transition-all">
           <span className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] border-l-white mr-2" />
           <span>Review your recording</span>
         </button>
