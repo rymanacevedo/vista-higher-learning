@@ -18,6 +18,32 @@ export default function App() {
           <span>Review your recording</span>
         </button>
       </div>
+
+      <div className="w-full max-w-2xl mx-auto mt-6">
+        <textarea
+          className="w-full p-3 border rounded-md min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your answer based on the reading material"
+        />
+      </div>
+
+      <div className="w-full max-w-2xl mx-auto mt-4 space-y-4">
+        <div className="flex items-center space-x-4">
+          <p>Is this your final answer?</p>
+          <div className="space-x-4">
+            <label className="inline-flex items-center">
+              <input type="radio" name="finalAnswer" value="true" className="form-radio" />
+              <span className="ml-2">True</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input type="radio" name="finalAnswer" value="false" className="form-radio" />
+              <span className="ml-2">False</span>
+            </label>
+          </div>
+        </div>
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+          Submit
+        </button>
+      </div>
     </>
   );
 }
