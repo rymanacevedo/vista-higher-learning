@@ -5,7 +5,7 @@ export default function App() {
   return (
     <>
       <h1 className="flex justify-center items-center">Say the vocabulary words</h1>
-      <div className="space-x-4 flex items-center justify-center">
+      <div className="space-x-4 space-y-0 flex items-center justify-center max-[350px]:flex-col max-[350px]:space-x-0 max-[350px]:space-y-4">
         <button className="inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-blue-600 text-white p-4 hover:ring-[0.75em] hover:ring-blue-200 focus:ring-[0.75em] focus:ring-blue-200 transition-all">
           <span className="w-4 h-4 bg-white mr-2" />
           <span>Stop</span>
