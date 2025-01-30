@@ -13,11 +13,11 @@ Practice makes perfect when learning a new language.`;
 export default function App() {
   const [finalAnswer, setFinalAnswer] = useState('');
   const [recordingState, setRecordingState] = useState<RecordingStates>('idle');
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const wordsRef = useRef<string[]>([]);
   const currentLineRef = useRef<number>(0);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const handleStop = () => {
     setRecordingState('idle');
     if (textareaRef.current) {
@@ -31,6 +31,9 @@ export default function App() {
         .split('\n')
         .map((line) => line.trim())
         .filter((line) => line.length > 0);
+      if (currentLineRef.current >= lines.length) {
+        currentLineRef.current = 0;
+      }
       const currentLine = lines[currentLineRef.current];
       wordsRef.current = currentLine.split(' ');
       if (currentWordIndex < wordsRef.current.length) {
@@ -53,6 +56,9 @@ export default function App() {
   const handleRecord = () => {
     setRecordingState('recording');
     setCurrentText('');
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
   };
 
   const handleReview = () => {
@@ -79,6 +85,7 @@ export default function App() {
           shape="w-4 h-4 bg-white rounded-full mr-2"
           text="Record"
           isActive={recordingState === 'recording'}
+          isBreathing={recordingState === 'recording'}
         />
 
         <Button
