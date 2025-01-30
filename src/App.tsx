@@ -31,23 +31,29 @@ export default function App() {
         Say the vocabulary words
       </h1>
       <div className="space-x-4 space-y-0 flex items-center justify-center max-[350px]:flex-col max-[350px]:space-x-0 max-[350px]:space-y-4">
-        <Button callback={handleStop} text='Stop' shape='w-4 h-4 bg-white mr-2' bgColor='blue' />
+        <Button
+          callback={handleStop}
+          text="Stop"
+          shape="w-4 h-4 bg-white mr-2"
+          bgColor="blue"
+          isDisabled={recordingState === 'idle'}
+        />
 
+        <Button
+          callback={handleRecord}
+          bgColor="red"
+          shape="w-4 h-4 bg-white rounded-full mr-2"
+          text="Record"
+          isActive={recordingState === 'recording'}
+        />
 
-        {/* <button
-          type="button"
-          onClick={handleStop}
-          className={`inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-blue-600 text-white p-4 hover:ring-[0.75em] hover:ring-blue-200 focus:ring-[0.75em] focus:ring-blue-200 transition-all ${recordingState !== 'idle' ? 'opacity-100' : 'opacity-50'}`}
-        >
-          <span className="w-4 h-4 bg-white mr-2" />
-          <span>Stop</span>
-        </button> */}
-
-        <Button callback={handleRecord} bgColor='red' shape='w-4 h-4 bg-white rounded-full mr-2' text='Record' />
-
-        <Button text='Review your recording' bgColor='green' shape='w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] border-l-white mr-2' callback={handleReview} />
-
-
+        <Button
+          text="Review your recording"
+          bgColor="green"
+          shape="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] border-l-white mr-2"
+          callback={handleReview}
+          isActive={recordingState === 'reviewing'}
+        />
       </div>
 
       <div className="w-full max-w-2xl mx-auto mt-6">
