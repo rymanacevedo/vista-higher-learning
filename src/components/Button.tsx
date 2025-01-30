@@ -16,7 +16,7 @@ export default function Button({
 }: Button) {
   return (
     <button
-      className={`inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-${bgColor}-600 text-white p-4 hover:ring-[0.75em] hover:ring-${bgColor}-200 focus:ring-[0.75em] focus:ring-${bgColor}-200 transition-all
+      className={`inline-flex items-center justify-center rounded-full border border-transparent cursor-pointer bg-${bgColor}-600 text-white p-3 hover:ring-[0.75em] hover:ring-${bgColor}-200 focus:ring-[0.75em] focus:ring-${bgColor}-200 transition-all
             ${isActive ? `ring-[0.75em] ring-${bgColor}-200` : ''}
                 ${isDisabled ? 'opacity-50' : 'opacity-100'}
             `}

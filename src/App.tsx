@@ -1,24 +1,58 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Button from './components/Button';
+import { useInterval } from './hooks/useInterval';
 
 type RecordingStates = 'idle' | 'recording' | 'reviewing';
+
+const sampleTexts = `The quick brown fox jumps over the lazy dog.
+Hello this is a sample recording text.
+Today is a beautiful day for practicing vocabulary.
+Learning new words helps expand your knowledge.
+Practice makes perfect when learning a new language.`;
 
 export default function App() {
   const [finalAnswer, setFinalAnswer] = useState('');
   const [recordingState, setRecordingState] = useState<RecordingStates>('idle');
-
+  const [currentText, setCurrentText] = useState('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const wordsRef = useRef<string[]>([]);
+  const currentLineRef = useRef<number>(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const handleStop = () => {
-    if (recordingState === 'recording') {
-      const textarea = document.querySelector('textarea');
-      if (textarea) {
-        textarea.focus();
-      }
-    }
     setRecordingState('idle');
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
   };
 
+  useInterval(
+    () => {
+      const lines = sampleTexts
+        .split('\n')
+        .map((line) => line.trim())
+        .filter((line) => line.length > 0);
+      const currentLine = lines[currentLineRef.current];
+      wordsRef.current = currentLine.split(' ');
+      if (currentWordIndex < wordsRef.current.length) {
+        setCurrentText((prev) =>
+          prev === ''
+            ? wordsRef.current[currentWordIndex]
+            : `${prev} ${wordsRef.current[currentWordIndex]}`,
+        );
+        setCurrentWordIndex((prev) => prev + 1);
+      } else {
+        currentLineRef.current++;
+        setCurrentWordIndex(0);
+        setRecordingState('idle');
+      }
+    },
+    1000,
+    recordingState === 'recording',
+  );
+
   const handleRecord = () => {
-    setRecordingState(recordingState === 'recording' ? 'idle' : 'recording');
+    setRecordingState('recording');
+    setCurrentText('');
   };
 
   const handleReview = () => {
@@ -57,7 +91,12 @@ export default function App() {
       </div>
 
       <div className="w-full max-w-2xl mx-auto mt-6">
-        <textarea className="w-full p-3 border rounded-md min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <textarea
+          ref={textareaRef}
+          value={currentText}
+          onChange={(e) => setCurrentText(e.target.value)}
+          className="w-full p-3 border rounded-md min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
       </div>
 
       <div className="w-full max-w-2xl mx-auto mt-4 space-y-4">
