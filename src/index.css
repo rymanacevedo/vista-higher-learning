@@ -22,15 +22,12 @@
 
 @keyframes ring-pulse {
   0% {
-    ring-width: 0.75em;
     opacity: 0.5;
   }
   50% {
-    ring-width: 1em;
     opacity: 1;
   }
   100% {
-    ring-width: 0.75em;
     opacity: 0.5;
   }
 }
